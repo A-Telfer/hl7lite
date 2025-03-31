@@ -1,14 +1,12 @@
 # hl7lite
-Cython-optimized parsing of HL7
-
-## Benchmarking
+Cython-optimized parsing of HL7 to XML with type-checking
 
 ## Contributing
-Contributions are welcome, please 
+Contributions are welcome
 
 ## License
 MIT License, use freely at own risk
 
-## Maintainer / Contact
-Andre Telfer (andre.telfer@sickkids.ca)
+## Maintainer
+Andre Telfer (andre.telfer@sickkids.ca)   
 Machine Learning Specialist @ The Hospital for Sick Children, Toronto, Canada

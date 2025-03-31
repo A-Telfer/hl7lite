@@ -1,0 +1,55 @@
+[build-system]
+requires = ["setuptools", "wheel", "Cython", "lxml"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "hl7lite"
+description = "A lightweight library for working with HL7 messages."
+authors = [
+    { name = "Andre Telfer", email = "andre.telfer@sickkids.ca" }
+]
+requires-python = ">=3.13"
+keywords = ["hl7", "healthcare", "messaging"]
+classifiers = [
+    "Programming Language :: Python :: 3.13",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent"
+]
+license = {file = "LICENSE"}
+dynamic = ["version", "readme"]
+dependencies = [
+    "setuptools>=77.0.0",
+    "cython>=3.0.12",
+    "lxml>=5.3.1",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "ruff>=0.11.2",
+    "mypy>=1.0"
+]
+
+profile = [
+    "line_profiler==3.5.1"
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["hl7lite"]
+
+[tool.setuptools.dynamic]
+version = {attr = "hl7lite.__version__"} 
+readme = {file = "README.md"}
+
+[lint]
+select = ["E4", "E7", "E9", "F", "B"]
+ignore = ["E501"]
+unfixable = ["B"]
+
+[lint.per-file-ignores]
+"__init__.py" = ["E402"]
+"**/{tests,docs,tools}/*" = ["E402"]
+
+[format]
+quote-style = "single"

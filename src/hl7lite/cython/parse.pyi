@@ -1,0 +1,3 @@
+import lxml.etree  # type: ignore[import]
+
+def parse_batch(s: str) -> lxml.etree.Element: ...

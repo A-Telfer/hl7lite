@@ -1,0 +1,20 @@
+*.egg-info/
+.ruff_cache/
+.mypy_cache/
+.pytest_cache/
+__pycache__/
+build/
+
+# Compiled Python files
+*.so
+*.c
+
+# Cython annotations
+src/**/*.html
+
+# Profiling
+*.prof
+*.lprof 
+
+# Folder for local files
+local/

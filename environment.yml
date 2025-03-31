@@ -1,0 +1,9 @@
+name: hl7lite
+channels:
+  - defaults
+  
+dependencies:
+  - python=3.13
+  - pip
+  - pip:
+    - .
