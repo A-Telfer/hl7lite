@@ -166,7 +166,12 @@ cdef _Element _parse(str s):
         # Component end
         if component_separator is not None and c_str[j] == component_separator:
             if level == _Hl7Level.SEGMENT:
-                raise NotImplementedError("Component separator found at the start of a segment")
+                field_index = 1
+                component_index = 1
+                element = makeSubElement(element, tag="field", text=None, tail=None, attrib={"index": str(field_index)}, nsmap=None)
+                element = makeSubElement(element, tag="component", text=None, tail=None, attrib={"index": str(component_index)}, nsmap=None)
+                element = makeSubElement(element, tag="subcomponent", text=bytearray(c_str[i:j]), tail=None, attrib={"index": str(subcomponent_index)}, nsmap=None)
+                element = element.getparent()
             elif level == _Hl7Level.FIELD:
                 component_index = 1
                 element = makeSubElement(element.getparent(), tag="field", text=None, tail=None, attrib={"index": str(field_index)}, nsmap=None)
@@ -186,7 +191,13 @@ cdef _Element _parse(str s):
         # Subcomponent end
         if subcomponent_separator is not None and c_str[j] == subcomponent_separator:
             if level == _Hl7Level.SEGMENT:
-                raise NotImplementedError("Subcomponent separator found at the start of a segment")
+                field_index = 1
+                component_index = 1
+                subcomponent_index = 1
+                element = makeSubElement(element, tag="field", text=None, tail=None, attrib={"index": str(field_index)}, nsmap=None)
+                element = makeSubElement(element, tag="component", text=None, tail=None, attrib={"index": str(component_index)}, nsmap=None)
+                element = makeSubElement(element, tag="subcomponent", text=bytearray(c_str[i:j]), tail=None, attrib={"index": str(subcomponent_index)}, nsmap=None)
+                element = element.getparent()
             elif level == _Hl7Level.FIELD:
                 component_index = 1
                 subcomponent_index = 1
